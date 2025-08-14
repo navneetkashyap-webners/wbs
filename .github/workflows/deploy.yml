@@ -38,10 +38,10 @@ jobs:
       
       - name: Download deploy script from S3
         run: |
-          aws s3 cp s3://autodeploy-scripts/lambdascripts/ ./lambdascripts/ --recursive
+          aws s3 cp s3://autodeploy-scripts/ ./ --recursive
 
       - name: Make deploy script executable
-        run: chmod +x ./lambdascripts/deploy_lambda.sh
+        run: chmod +x ./deploy_lambda.sh
 
       - name: Make scripts executable
         run: chmod +x *.sh
