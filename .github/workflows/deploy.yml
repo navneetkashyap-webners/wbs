@@ -38,7 +38,7 @@ jobs:
       
       - name: Download deploy script from S3
         run: |
-          aws s3 cp s3://autodeploy-scripts/working2/* .
+          aws s3 cp s3://autodeploy-scripts/working2/* . --recursive
       - name: List downloaded files
         run: |
               echo "Downloaded files:"
