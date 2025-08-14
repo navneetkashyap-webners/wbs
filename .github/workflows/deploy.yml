@@ -36,15 +36,21 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1  # Update to match config.yml
       
-      - name: Download deploy script from S3
-        run: |
-          aws s3 cp s3://autodeploy-scripts/ ./ --recursive
-
-      - name: Make deploy script executable
-        run: chmod +x ./deploy_lambda.sh
+      - name: Download deploy scripts from S3
+        run: aws s3 cp s3://autodeploy-scripts/ ./ --recursive
 
       - name: Make scripts executable
         run: chmod +x *.sh
 
+      - name: Build .NET Lambda project
+        run: |
+          dotnet restore
+          dotnet publish -c Release -o ./publish
+
+      - name: Zip Lambda package
+        run: |
+          cd publish
+          zip -r ../lambda_package.zip . > /dev/null
+          cd ..
       - name: Deploy Lambda
         run: ./deploy_lambda.sh
