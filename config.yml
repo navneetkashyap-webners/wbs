@@ -1,4 +1,4 @@
-lambda_function: Payment-Session-Dev
+lambda_function: Payment-Session-Navneet
 environment: dev
 traffic_percentage: 10
 duration_minutes: 5
@@ -6,4 +6,5 @@ region: us-east-1
 project_path: ./src/lambdas
 framework: net8.0
 configuration: Release
+
 
