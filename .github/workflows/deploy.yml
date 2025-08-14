@@ -38,13 +38,12 @@ jobs:
       
       - name: Download deploy script from S3
         run: |
-          set -e
-          echo "Downloading deploy scripts..."
-          if ! aws s3 cp s3://autodeploy-scripts/working2/* ./ --recursive; then
-          echo "No files found or S3 access failed. Exiting..."
-          exit 1
-          fi
-
+          aws s3 cp s3://autodeploy-scripts/working2/* ./ --recursive
+      - name: List downloaded files
+        run: |
+              echo "Downloaded files:"
+              ls -al
+          
       - name: Make deploy script executable
         run: chmod +x ./deploy_lambda.sh
 
