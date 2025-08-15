@@ -29,7 +29,7 @@ else
     DURATION_MINUTES=$(yq '.duration_minutes' "$CONFIG_FILE")
     REGION=$(yq '.region' "$CONFIG_FILE")
     REPO_URL=$(yq '.repo_url' "$CONFIG_FILE")                     # NEW
-    BRANCH=$(yq '.branch // "main"' "$CONFIG_FILE")              # NEW (optional)
+#    BRANCH=$(yq '.branch // "main"' "$CONFIG_FILE")              # NEW (optional)
 fi
 
 # === Validate Required Fields ===
