@@ -45,8 +45,8 @@ jobs:
               ls -al
           
       - name: Make deploy script executable
-        run: chmod +x deploy_lambda.sh alias.sh envvars.sh lambda-env-config.sh publish.sh route.sh vpc.sh
-
+        run: chmod +x deploy_lambda.sh
+        
       - name: Make scripts executable
         run: chmod +x *.sh
 
