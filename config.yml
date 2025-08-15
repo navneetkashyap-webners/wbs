@@ -7,6 +7,3 @@ project_path: ./
 framework: net8.0
 configuration: Release
 GIT_REPO: https://github.com/navneetkashyap-webners/wbs.git
-BRANCH: "master"
-
-
