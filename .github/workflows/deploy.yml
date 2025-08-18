@@ -49,4 +49,4 @@ jobs:
         run: chmod +x *.sh
 
       - name: Deploy Lambda
-        run: ./deploy_lambda.sh dev
+        run: ./deploy_lambda-dev.sh
