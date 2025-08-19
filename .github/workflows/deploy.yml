@@ -2,7 +2,7 @@ name: Deploy .NET Lambda
 
 on:
   push:
-    branches: [master]
+    branches: [Dev]
     
 jobs:
   deploy:
@@ -43,7 +43,7 @@ jobs:
               ls -al
           
       - name: Make deploy script executable
-        run: chmod +x deploy_lambda.sh
+        run: chmod +x deploy_lambda-dev.sh
         
       - name: Make scripts executable
         run: chmod +x *.sh
