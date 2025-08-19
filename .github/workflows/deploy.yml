@@ -5,6 +5,10 @@ on:
     branches: 
       - development
       - master
+  pull_request:
+    branches:
+      - development
+      - master
 
 jobs:
   deploy:
