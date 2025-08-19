@@ -6,7 +6,7 @@ region: us-east-1
 project_path: ./
 framework: net8.0
 configuration: Release
-Git_repo: https://github.com/navneetkashyap-webners/wbs.git
+
 
 
 
