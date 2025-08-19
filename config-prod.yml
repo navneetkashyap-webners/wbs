@@ -6,6 +6,3 @@ region: us-east-1
 project_path: ./
 framework: net8.0
 configuration: Release
-
-
-
