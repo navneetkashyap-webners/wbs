@@ -50,8 +50,8 @@ jobs:
 
       - name: Deploy Lambda (Dev)
         if: github.ref == 'refs/heads/development'
-        run: ./deploy_lambda-dev.sh
+        run: ./deploy_lambda.sh dev
 
       - name: Deploy Lambda (Prod)
         if: github.ref == 'refs/heads/master'
-        run: ./deploy_lambda-prod.sh
+        run: ./deploy_lambda.sh prod
