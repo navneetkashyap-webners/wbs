@@ -3,7 +3,7 @@ name: Deploy .NET Lambda
 on:
   push:
     branches: 
-      - Dev
+      - development
       - master
 
 jobs:
