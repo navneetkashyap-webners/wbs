@@ -1,12 +1,6 @@
 name: Deploy .NET Lambda
 
 on:
-  push:
-    branches:
-      - development
-      - staging
-      - master
-on:
   repository_dispatch:
     types: [deploy]
 
