@@ -2,17 +2,15 @@ name: Deploy .NET Lambda
 
 on:
   push:
-    branches: 
-      - development
-      - master
-  pull_request:
     branches:
       - development
+      - staging
       - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: ${{ github.ref_name }}   # maps branch to environment (dev → Dev, staging → Staging, master → Production)
 
     steps:
       - name: Checkout source
@@ -38,24 +36,19 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1  # Update if needed
-      
+          aws-region: us-east-1  # can also be set per env in GitHub
+
       - name: Download deploy script from S3
         run: |
           aws s3 cp s3://autodeploy-scripts/working/ . --recursive
+          chmod +x *.sh
 
-      - name: List downloaded files
+      - name: Deploy Lambda
         run: |
-          echo "Downloaded files:"
-          ls -al
-          
-      - name: Make scripts executable
-        run: chmod +x *.sh
-
-      - name: Deploy Lambda (Dev)
-        if: github.ref == 'refs/heads/development'
-        run: ./deploy_lambda.sh dev
-
-      - name: Deploy Lambda (Prod)
-        if: github.ref == 'refs/heads/master'
-        run: ./deploy_lambda.sh prod
+          if [[ "${GITHUB_REF_NAME}" == "development" ]]; then
+            ./deploy_lambda.sh dev
+          elif [[ "${GITHUB_REF_NAME}" == "staging" ]]; then
+            ./deploy_lambda.sh staging
+          elif [[ "${GITHUB_REF_NAME}" == "master" ]]; then
+            ./deploy_lambda.sh prod
+          fi
