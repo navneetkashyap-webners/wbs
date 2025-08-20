@@ -6,6 +6,9 @@ on:
       - development
       - staging
       - master
+on:
+  repository_dispatch:
+    types: [deploy]
 
 jobs:
   deploy:
