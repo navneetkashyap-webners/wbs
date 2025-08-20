@@ -1,4 +1,4 @@
-name: Trigger Deployment
+name: Trigger Deploy Workflow
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger main deploy workflow in master
+      - name: Dispatch to master workflow
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
