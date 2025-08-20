@@ -1,0 +1,19 @@
+name: Trigger Deployment
+
+on:
+  push:
+    branches:
+      - development
+      - master
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger main deploy workflow in master
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          event-type: deploy
+          client-payload: '{"ref": "${{ github.ref_name }}"}'
