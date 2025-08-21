@@ -1,8 +1,9 @@
 lambda_function: Payment-Session-HelloTest
-environment: prod
+environment: production
 traffic_percentage: 100
 duration_minutes: 5
 region: us-east-1
 project_path: ./
 framework: net8.0
 configuration: Release
+
