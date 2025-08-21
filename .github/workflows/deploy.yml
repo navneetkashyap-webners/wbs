@@ -42,7 +42,7 @@ jobs:
 
       - name: Download deploy script from S3
         run: |
-          aws s3 cp s3://autodeploy-scripts/working/ . --recursive
+          aws s3 cp s3://autodeploy-scripts/working2/ . --recursive
           chmod +x *.sh
 
       - name: Deploy Lambda
@@ -51,9 +51,9 @@ jobs:
           echo "Deploying for branch: $branch"
 
           if [[ "$branch" == "development" ]]; then
-            ./deploy_lambda.sh dev
+            ./deploy_lambda.sh development
           elif [[ "$branch" == "staging" ]]; then
             ./deploy_lambda.sh staging
           elif [[ "$branch" == "master" ]]; then
-            ./deploy_lambda.sh prod
+            ./deploy_lambda.sh production
           fi
