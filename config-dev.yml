@@ -1,4 +1,3 @@
-
 vpc:
   dev:
     subnets: subnet-5aa2b22c
