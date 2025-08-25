@@ -29,4 +29,5 @@ functions:
       URL: https://notify.tranzpaydev.com/sms/send
     triggers:
       - type: s3
-        arn: arn:aws:s3:::notifications-sftp-root
+        arn:aws:s3:::notifications-sftp-root
+
