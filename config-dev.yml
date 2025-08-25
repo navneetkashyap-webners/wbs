@@ -28,6 +28,7 @@ functions:
       Environment: development
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpaydev.com/sms/send
-    triggers:
+    trigger:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-root
+
