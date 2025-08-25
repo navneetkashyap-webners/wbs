@@ -51,9 +51,9 @@ jobs:
           echo "Deploying for branch: $branch"
 
           if [[ "$branch" == "development" ]]; then
-            ./deploy_lambda.sh development
+            ./deploy_lambda.sh dev
           elif [[ "$branch" == "staging" ]]; then
             ./deploy_lambda.sh staging
           elif [[ "$branch" == "master" ]]; then
-            ./deploy_lambda.sh production
+            ./deploy_lambda.sh prod
           fi
