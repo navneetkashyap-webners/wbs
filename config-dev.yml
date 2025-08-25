@@ -1,3 +1,7 @@
+region: us-east-1
+traffic_percentage: 100
+duration_minutes: 5
+
 functions:
   - name: Payment-Session-HelloTest
     handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
@@ -19,7 +23,4 @@ functions:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-root
 
-region: us-east-1
-traffic_percentage: 100
-duration_minutes: 5
 
