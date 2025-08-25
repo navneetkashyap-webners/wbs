@@ -1,34 +1,33 @@
+
+vpc:
+  dev:
+    subnets: subnet-5aa2b22c
+    security_groups: sg-0759b55b0464beb0a
+  prod:
+    subnets: subnet-0d929a68ce19ad1c7
+    security_groups: sg-029668d231d090f15
+
 region: us-east-1
-traffic: 100
-duration: 5
+traffic_percentage: 100
+duration_minutes: 5
 
 functions:
-  - name: Payment-Session-HelloTest
-    handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
-    runtime: dotnet8
-    memory: 512
-    timeout: 30
+  - name: Payment-Session-Prod
+    handler: Authentication::TranzPay.Authentication.AuthenticationLambda::FunctionHandler
     environment:
       Environment: development
 
   - name: Payment-Session-Hello
-    handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
-    runtime: dotnet8
-    memory: 512
-    timeout: 30
+    handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
     environment:
       Environment: development
 
   - name: Payment-Session-Dev
-    handler: PaymentSession::PaymentSession.Function::FunctionHandler
-    runtime: dotnet8
-    memory: 512
-    timeout: 30
+    handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
     environment:
       Environment: development
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpaydev.com/sms/send
-    trigger:
+    triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-root
-
