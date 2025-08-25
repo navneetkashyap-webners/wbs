@@ -9,12 +9,12 @@ functions:
       Environment: development
 
   - name: Payment-Session-Hello
-    handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
+    handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
     environment:
       Environment: development
 
   - name: Payment-Session-Dev
-    handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
+    handler: PaymentSession::PaymentSession.Function::FunctionHandler
     environment:
       Environment: development
       QueueName: Dev-TranzPay-SendSMS-Queue
@@ -22,3 +22,4 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-root
+
