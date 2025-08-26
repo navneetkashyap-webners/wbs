@@ -11,7 +11,7 @@ traffic_percentage: 100
 duration_minutes: 5
 
 functions:
-  - name: ayment-Session-HelloTest
+  - name: Payment-Session-HelloTest
     handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
     environment:
       Environment: development
@@ -20,6 +20,7 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
+
 
 
 
