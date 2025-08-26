@@ -1,10 +1,9 @@
 vpc:
   dev:
-    subnets: subnet-5aa2b22c
-    security_groups: sg-0759b55b0464beb0a
-  prod:
-    subnets: subnet-0d929a68ce19ad1c7
-    security_groups: sg-029668d231d090f15
+    subnets:
+      - subnet-5aa2b22c
+    security_groups:
+      - sg-0759b55b0464beb0a
 
 region: us-east-1
 traffic_percentage: 100
@@ -13,6 +12,8 @@ duration_minutes: 5
 functions:
   - name: Payment-Session-HelloTest
     handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
+    memory: 512
+    timeout: 30
     environment:
       Environment: development
       QueueName: Dev-TranzPay-SendSMS-Queue
@@ -20,7 +21,3 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
-
-
-
-
