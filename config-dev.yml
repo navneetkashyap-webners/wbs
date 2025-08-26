@@ -10,6 +10,7 @@ region: us-east-1
 traffic_percentage: 100
 duration_minutes: 5
 
+functions:
   - name: Payment-Session-Dev
     handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
     environment:
