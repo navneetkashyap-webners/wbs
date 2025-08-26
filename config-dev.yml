@@ -33,4 +33,3 @@ functions:
         properties:
           bucket: notifications-sftp-dev
           events: s3:ObjectCreated:*
-
