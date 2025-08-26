@@ -1,9 +1,23 @@
-lambda_function: Payment-Session-HelloTest
-environment: production
+vpc:
+  prod:
+    subnets:
+      - subnet-0d929a68ce19ad1c7
+    security_groups:
+      - sg-029668d231d090f15
+
+region: us-east-1
 traffic_percentage: 100
 duration_minutes: 5
-region: us-east-1
-project_path: ./
-framework: net8.0
-configuration: Release
 
+functions:
+  - name: Payment-Session-HelloTest
+    handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
+    memory: 512
+    timeout: 30
+    environment:
+      Environment: production
+      QueueName: Dev-TranzPay-SendSMS-Queue
+      URL: https://notify.tranzpay.com/sms/send
+    triggers:
+      - type: s3
+        arn: arn:aws:s3:::notifications-sftp-prod
