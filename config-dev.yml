@@ -27,9 +27,6 @@ functions:
       Environment: development
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpaydev.com/sms/send
-    events:
-      S3UploadEvent:
-        type: s3
-        properties:
-          bucket: notifications-sftp-dev
-          events: s3:ObjectCreated:*
+    triggers:
+      - type: s3
+        bucket: notifications-sftp-dev
