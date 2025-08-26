@@ -10,17 +10,6 @@ region: us-east-1
 traffic_percentage: 100
 duration_minutes: 5
 
-functions:
-  - name: Payment-Session-Prod
-    handler: Authentication::TranzPay.Authentication.AuthenticationLambda::FunctionHandler
-    environment:
-      Environment: development
-
-  - name: Payment-Session-Hello
-    handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
-    environment:
-      Environment: development
-
   - name: Payment-Session-Dev
     handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
     environment:
@@ -30,3 +19,4 @@ functions:
     triggers:
       - type: s3
         bucket: notifications-sftp-dev
+
