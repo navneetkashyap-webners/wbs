@@ -19,13 +19,12 @@ functions:
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpay.com/sms/send
     triggers:
-      - type: s3
-        arn: arn:aws:s3:::notifications-sftp-prod
     apigateway:
       arn: arn:aws:apigateway:us-east-1::/apis/i3w1qk9739
       method: POST
       resource_path: /
-      stage: Dev
-      statement_id: apigw-dev-permission
+      stage: Prod
+      statement_id: apigw-prod-permission
+
 
 
