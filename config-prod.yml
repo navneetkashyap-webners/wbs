@@ -23,8 +23,9 @@ functions:
       arn: arn:aws:apigateway:us-east-1::/apis/i3w1qk9739
       method: POST
       resource_path: /
-      stage: Prod
+      stage: $default
       statement_id: apigw-prod-permission
+
 
 
 
