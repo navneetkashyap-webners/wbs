@@ -21,10 +21,6 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-prod
-    apigateway:
-      rest_api_name: TestApi
-      method: POST
-      resource_path: /
-      stage: Dev
-      statement_id: 890ad920-fe35-5aff-bdda-1fe851804b1e
+      -type: apigateway:
+        arn: arn:aws:apigateway:us-east-1::/apis/i3w1qk9739
 
