@@ -10,7 +10,7 @@ traffic_percentage: 100
 duration_minutes: 5
 
 functions:
-  - name: Payment-Session-HelloTest
+  - name: Payment-Session-Hello
     handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
     memory: 512
     timeout: 30
@@ -21,3 +21,10 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-prod
+    apigateway:
+      rest_api_name: TestApi
+      method: POST
+      resource_path: /
+      stage: Dev
+      statement_id: 890ad920-fe35-5aff-bdda-1fe851804b1e
+
