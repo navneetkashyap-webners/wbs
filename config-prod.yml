@@ -21,6 +21,11 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-prod
-      -type: apigateway:
-        arn: arn:aws:apigateway:us-east-1::/apis/i3w1qk9739
+    apigateway:
+      arn: arn:aws:apigateway:us-east-1::/apis/i3w1qk9739
+      method: POST
+      resource_path: /
+      stage: Dev
+      statement_id: apigw-dev-permission
+
 
