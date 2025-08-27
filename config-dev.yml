@@ -21,6 +21,3 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
-      - type: apigateway
-        arn: arn:aws:execute-api:us-east-1:991862549203:apis/i3w1qk9739
-
