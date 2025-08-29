@@ -16,4 +16,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ github.repository }}
           event-type: deploy
-          client-payload: '{"ref": "${{ github.ref_name }}"}'
+          client-payload: >-
+            {
+              "ref": "${{ github.ref_name }}",
+              "event_name": "${{ github.event_name }}",
+              "actor": "${{ github.actor }}",
+              "sha": "${{ github.sha }}"
+            }
