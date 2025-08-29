@@ -18,13 +18,6 @@ functions:
       Environment: production
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpay.com/sms/send
-    triggers:
-    apigateway:
-      arn: arn:aws:apigateway:us-east-1::/apis/i3w1qk9739
-      method: POST
-      resource_path: /
-      stage: $default
-      statement_id: apigw-prod-permission
 
 
 
