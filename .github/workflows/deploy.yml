@@ -1,33 +1,20 @@
+
 name: Deploy .NET Lambda
 
 on:
   push:
     branches:
       - master
-      - development
-  pull_request:
-    branches:
-      - master
-      - development
-    types:
-      - closed
+  repository_dispatch:
+    types: [deploy]
 
 jobs:
   deploy:
-    # ✅ Run if it's a direct push OR a merged PR
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    if: github.event.pull_request.merged == true || contains(github.event.head_commit.message, 'Merge pull request')
     runs-on: ubuntu-latest
     environment: ${{ github.event.client_payload.ref || github.ref_name }}
 
     steps:
-      - name: Show trigger info
-        run: |
-          echo "📌 Deployment triggered"
-          echo "🔹 Branch/Ref: ${{ github.event.client_payload.ref }}"
-          echo "🔹 Event Name: ${{ github.event.client_payload.event_name }}"
-          echo "🔹 Actor: ${{ github.event.client_payload.actor }}"
-          echo "🔹 Commit SHA: ${{ github.event.client_payload.sha }}"
-
       - name: Checkout source
         uses: actions/checkout@v4
         with:
