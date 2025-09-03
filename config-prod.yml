@@ -4,6 +4,7 @@ vpc:
       - subnet-0d929a68ce19ad1c7
     security_groups:
       - sg-029668d231d090f15
+      - sg-0963ffae6c806ae69
 
 region: us-east-1
 traffic_percentage: 100
@@ -18,6 +19,7 @@ functions:
       Environment: production
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpay.com/sms/send
+
 
 
 
