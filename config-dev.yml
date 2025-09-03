@@ -4,6 +4,7 @@ vpc:
       - subnet-5aa2b22c
     security_groups:
       - sg-0da7caf7113fd6f4f
+      - sg-03abda73886b474d0
 
 region: us-east-1
 traffic_percentage: 100
@@ -21,4 +22,5 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
+
 
