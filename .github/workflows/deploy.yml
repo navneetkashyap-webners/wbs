@@ -9,7 +9,9 @@ on:
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true || contains(github.event.head_commit.message, 'Merge pull request')
+    # Uncomment the line below ONLY if you want to restrict when the job runs
+    # if: github.event_name == 'repository_dispatch' || github.ref == 'refs/heads/master'
+
     runs-on: ubuntu-latest
     environment: ${{ github.event.client_payload.ref || github.ref_name }}
 
