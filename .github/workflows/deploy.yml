@@ -10,15 +10,12 @@ on:
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true || contains(github.event.head_commit.message, 'Merge pull request')
     runs-on: ubuntu-latest
-    environment: ${{ github.event.client_payload.ref || github.ref_name }}
+    environment: ${{ github.ref_name }}   # maps branch to environment (dev → Dev, staging → Staging, master → Production)
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.client_payload.ref || github.ref_name }}
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
@@ -40,20 +37,17 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: us-east-1  # can also be set per env in GitHub
 
       - name: Download deploy script from S3
         run: |
-          aws s3 cp s3://autodeploy-scripts/try/ . --recursive
+          aws s3 cp s3://autodeploy-scripts/working3/ . --recursive
           chmod +x *.sh
 
       - name: Deploy Lambda
         run: |
-          branch="${{ github.event.client_payload.ref || github.ref_name }}"
-          echo "Deploying for branch: $branch"
-
-          if [[ "$branch" == "development" ]]; then
+          if [[ "${GITHUB_REF_NAME}" == "AutoDeployment" ]]; then
             ./deploy_lambda.sh dev
-          elif [[ "$branch" == "master" ]]; then
+          elif [[ "${GITHUB_REF_NAME}" == "prodtest" ]]; then
             ./deploy_lambda.sh prod
           fi
