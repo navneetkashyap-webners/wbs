@@ -12,7 +12,8 @@ duration_minutes: 5
 
 functions:
   - name: Payment-Session-Hello
-    handler: notification-SFTPProcessor::TranzPay.Notification.SFTPProcessor.SFTPProcessorLambda::FunctionHandler
+    path: trail/
+    handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
     memory: 512
     timeout: 30
     environment:
@@ -22,5 +23,6 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
+
 
 
