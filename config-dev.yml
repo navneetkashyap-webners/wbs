@@ -12,7 +12,7 @@ duration_minutes: 5
 
 functions:
   - name: Payment-Session-HelloT
-    path: trail/
+    path: test/publish0/
     handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
     memory: 512
     timeout: 30
@@ -23,6 +23,7 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
+
 
 
 
