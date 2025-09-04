@@ -11,7 +11,8 @@ traffic_percentage: 100
 duration_minutes: 5
 
 functions:
-  - name: Payment-Session-Hello
+  - name: Payment-Session-HelloT
+    path: test/publish1/
     handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
     memory: 512
     timeout: 30
@@ -19,6 +20,7 @@ functions:
       Environment: production
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpay.com/sms/send
+
 
 
 
