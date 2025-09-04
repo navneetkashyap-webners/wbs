@@ -13,13 +13,14 @@ duration_minutes: 5
 functions:
   - name: Payment-Session-HelloT
     path: test/publish1/
-    handler: notification-DeliveryReport::notification.DeliveryReport.Function::FunctionHandler
+    handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
     memory: 512
     timeout: 30
     environment:
       Environment: production
       QueueName: Dev-TranzPay-SendSMS-Queue
       URL: https://notify.tranzpay.com/sms/send
+
 
 
 
