@@ -45,7 +45,7 @@ jobs:
 
       - name: Download deploy script from S3
         run: |
-          aws s3 cp s3://autodeploy-scripts/script/ . --recursive
+          aws s3 cp s3://autodeploy-scripts/scripts/ . --recursive
           chmod +x *.sh
 
       - name: Deploy Lambda
