@@ -27,10 +27,3 @@ functions:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
 
-
-
-
-
-
-
-
