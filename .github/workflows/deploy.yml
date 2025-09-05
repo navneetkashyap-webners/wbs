@@ -53,7 +53,7 @@ jobs:
           branch="${{ github.event.client_payload.ref || github.ref_name }}"
           echo "Deploying for branch: $branch"
 
-          if [[ "$branch" == "development" ]]; then
+          if [[ "$branch" == "staging" ]]; then
             ./deploy_lambda.sh dev
           elif [[ "$branch" == "master" ]]; then
             ./deploy_lambda.sh prod
