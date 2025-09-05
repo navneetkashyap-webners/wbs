@@ -14,7 +14,7 @@ functions:
   - name: Payment-Session-HelloT
     repo_url: "https://github.com/navneetkashyap-webners/wbs.git"
     repo_branch: "development"
-    path: ./test/publish0/
+    path: test/publish0/
     CodeUri: ./test/publish0/
     handler: HelloWorldLambda::HelloWorldLambda.Function::FunctionHandler
     memory: 512
@@ -26,5 +26,6 @@ functions:
     triggers:
       - type: s3
         arn: arn:aws:s3:::notifications-sftp-dev
+
 
 
